@@ -116,6 +116,27 @@ namespace swatchr {
 				}
 			}
 		}
+		
+		[MenuItem("Assets/Swatchr/Import Swatch From Texture (Browse...)")]
+		public static void ImportSwatchFromTexture() {
+			var path = EditorUtility.OpenFilePanel("Swatchr Import Texture", "", "png");
+			if (path != null && path != string.Empty) {
+				Debug.Log("[SwatchEditorGUI] importing texture at path " + path);
+				var bytes = File.ReadAllBytes(path);
+				var tex = new Texture2D(1,1);
+				tex.LoadImage(bytes);
+				var pixels = tex.GetPixels();
+				if (pixels != null && pixels.Length > 0) {
+					var swatch = ScriptableObject.CreateInstance<Swatch>();
+					System.Array.Resize<Color>(ref swatch.colors, pixels.Length);
+					for (int j = 0; j < pixels.Length; j++) { 
+						swatch.colors[j] = pixels[j];
+					}
+					ProjectWindowUtil.CreateAsset(swatch, "New Swatch.asset");
+					AssetDatabase.SaveAssets();
+				}
+			}
+		}
 
 		[MenuItem("Assets/Swatchr/Export Swatch To Texture")]
 		public static void ExportSwatchToTexture() {
@@ -130,33 +151,6 @@ namespace swatchr {
 		public static bool ExportSwatchToTexture_Validate() {
 			var activeObject = Selection.activeObject;
 			return activeObject != null && activeObject is Swatch;
-		}
-
-		
-		[MenuItem("Assets/Swatchr/Import Swatch From Texture")]
-		public static void ImportSwatchFromTexture() {
-			var selectedTexture = (Texture2D)Selection.activeObject;
-			string saveLocation = GetSelectedSavePath(GetSelectedFileName());
-			Debug.Log("[SwatchCreator] exporting swatch to " + saveLocation);
-
-			var swatch = ScriptableObject.CreateInstance<Swatch>();
-			swatch.colors = selectedTexture.GetPixels();
-			for (int i = 0; i < swatch.colors.Length; i++) {
-				var c = swatch.colors[i];
-				swatch.colors[i] = c;
-			}
-			
-			AssetDatabase.CreateAsset(swatch, saveLocation);
-			AssetDatabase.SaveAssets();
-
-			EditorUtility.FocusProjectWindow();
-			Selection.activeObject = swatch;			
-		}
-
-		[MenuItem("Assets/Swatchr/Import Swatch From Texture", true)]
-		public static bool ImportSwatchFromTexture_Validate() {
-			var activeObject = Selection.activeObject;
-			return activeObject != null && activeObject is Texture2D;
 		}
 
 		static string GetSelectedSavePath(string title) {

@@ -126,7 +126,7 @@ namespace swatchr {
 						swatch.ReplaceSelfWithOtherSwatch(replaceObject);
 						GameViewRepaint();
 						replaceObject = null;
-						replace = false;
+						//replace = false;
 					}
 					EditorGUI.EndDisabledGroup();
 				}
