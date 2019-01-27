@@ -6,9 +6,9 @@ Swatchr allows Unity developers to store color palettes inside scriptable object
 
 # Features
 * Color palettes stored as scriptable objects in your project and repository
-* Importing swatches from .ase & .png files 
+* Import swatches from .ase & .png files 
 * Import swatches from MagicaVoxel's palette export (See Note)
-* Exporing swatches to Unity's built in Color Picker tool
+* Export swatches to Unity's built in Color Picker tool
 * Components to apply color to Mesh Renderer, Sprite Renderer, Particle System, Light and Camera clear color
 * Nice editor UI
 * Comes with the AAP-Splendor-128 color palette designed by [@AdigunPolack](https://twitter.com/adigunpolack/status/993524761019015168)
@@ -32,6 +32,9 @@ MagicaVoxel exports it's palettes with color profiles embedded in the png. Unity
 
 ## Swapping Swatches
 Create a swatch for your project, eg) "MySwatch", and then use that swatch everywhere. Now make a backup of that swatch and create alternative swatches. Now use the Replace button on MySwatch to swap color palettes.
+
+## Selecting Materials
+Try the Legacy -> Diffuse material to get a pure, clean, low poly look.
 
 # Technical Details
 * Swatch.cs is a scriptable object that contains an array of colors.
