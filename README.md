@@ -1,6 +1,7 @@
 ![Swatchr Logo](https://i.imgur.com/pZ9rziI.png "Swatchr Logo")
 
-by [@00jknight](http://www.00jknight.com/)
+>by [@00jknight](http://www.00jknight.com/)
+
 # Overview
 Swatchr allows Unity developers to store color palettes inside scriptable objects in their projects. Renderers, particle systems, cameras and shaders can then reference colors as keys into swatches. Swatches can be replaced and updated at runtime, and the changes will propagate. Swatches can be exported to Unity's built in color picker system. Swatchr can be easily extended to custom components by implementing the SwatchrColorApplier interface.
 
