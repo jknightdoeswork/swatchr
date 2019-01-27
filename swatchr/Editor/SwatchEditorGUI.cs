@@ -27,7 +27,7 @@ namespace swatchr {
 						Repaint();
 					}
 					
-					if (swatch.colors.Length > 0) {
+					if (swatch.numColors > 0) {
 						
 						var selectedColor = swatch.GetColor(colorRef);
 						int selectedColorRow = colorRef / SwatchrPaletteDrawer.itemsPerRow;

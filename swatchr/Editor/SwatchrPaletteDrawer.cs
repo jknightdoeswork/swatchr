@@ -40,8 +40,10 @@ namespace swatchr {
 				Debug.LogWarning("[SwatchrPalleteDrawer] creating white texture");
 				whiteTexture = textureWithColor(Color.white);
 			}
+
+			int numColors = swatch.colors != null ? swatch.colors.Length : 0;
 			int numPerRow = itemsPerRow;
-			int numInBottomRow = swatch.colors.Length % numPerRow;
+			int numInBottomRow = numColors % numPerRow;
 			
 			float heightOfPallete = 0;
 			var textureRect = new Rect(lastRect.x, lastRect.y + lastRect.height, 0.0f,0.0f);
@@ -67,7 +69,7 @@ namespace swatchr {
 			}
 
 			if (drawNewColorButton) {
-				DrawNewColorButton(swatch.colors.Length, textureRect);
+				DrawNewColorButton(numColors, textureRect);
 			}
 
 			bool somethingHasChanged = false;
@@ -79,14 +81,13 @@ namespace swatchr {
 					int cellYIndex = (int)(rectClickPosition.y / EditorGUIUtility.singleLineHeight);
 					int textureWidth = palleteTexture != null ? palleteTexture.width : 0;
 					int clickedOnKey = cellYIndex * textureWidth + cellXIndex;
-					int numColors = swatch.colors != null ? swatch.colors.Length : 0;
 					if (numColors > 0 && clickedOnKey < numColors) {
 						colorKey = clickedOnKey;
 						somethingHasChanged = true;
 					}
 					else if (clickedOnKey == numColors) {
 						colorKey = clickedOnKey;
-						System.Array.Resize(ref swatch.colors, swatch.colors.Length + 1);
+						System.Array.Resize(ref swatch.colors, numColors + 1);
 						swatch.colors[colorKey] = Color.white;
 						swatch.SignalChange();
 						somethingHasChanged = true;
@@ -97,7 +98,7 @@ namespace swatchr {
 				}
 			}
 
-			if (swatch.colors.Length > 0) {
+			if (swatch.colors != null && swatch.colors.Length > 0) {
 				DrawOnSelectedCell(colorKey, textureRect);
 				int selectedColorRow = colorKey / SwatchrPaletteDrawer.itemsPerRow;
 				float selectedColorY = selectedColorRow * EditorGUIUtility.singleLineHeight + EditorGUIUtility.singleLineHeight;

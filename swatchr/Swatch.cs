@@ -8,7 +8,8 @@ using SmartWeakEvent;
 namespace swatchr {
 	public class Swatch : ScriptableObject {
 		public Color[] colors;
-
+		public int numColors { get { return colors != null ? colors.Length : 0; } }
+		
 		[NonSerialized]
 		private Texture2D texture = null;
 		public Texture2D cachedTexture {
