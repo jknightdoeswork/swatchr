@@ -43,6 +43,6 @@ Try the Legacy -> Diffuse material to get a pure, clean, low poly look.
 * Other examples of SwatchrColorApplier are SwatchrLight, SwatchrParticleSystem & SwatchrAmbientLightColor.
 
 # Screenshots
-![Swatch Asset](https://i.imgur.com/xxtcCix.gif "Swatch Gif")
+![Swatch Asset](https://i.imgur.com/81pPvFg.gif "Swatch Gif")
 ![Swatch Asset](https://i.imgur.com/Trtywop.png "Swatch Asset")
 ![Color Picker](https://i.imgur.com/qCEx68a.png "Color Picker")
