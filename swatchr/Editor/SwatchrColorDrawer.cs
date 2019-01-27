@@ -20,7 +20,9 @@ namespace swatchr {
 			Swatch swatch = swatchrColor.swatch;
 			Color color = swatchrColor.color;
 			if (swatchTexture == null) {
+				#if SWATCHR_VERBOSE
 				Debug.LogWarning("[swatchrColorDrawer] creating swatch texture");
+				#endif
 				swatchTexture = textureWithColor(color);
 			}
 
@@ -88,7 +90,9 @@ namespace swatchr {
 				if (paletteOpen) {
 					int swatchHash = swatch.cachedTexture.GetHashCode();
 					if (palleteTexture == null || palleteTextureCachedHash != swatchHash) {
+						#if SWATCHR_VERBOSE
 						Debug.LogWarning("[swatchrColorDrawer] creating pallete texture");
+						#endif
 						palleteTexture = textureWithColors(swatch.colors);
 						palleteTextureCachedHash = swatchHash;
 					}
@@ -173,7 +177,9 @@ namespace swatchr {
 
 		void DrawBlackGrid(float startingPointX, float startingPointY, int cellsX, int cellsY, int cellSize) {
 			if (blackTexture == null) {
+				#if SWATCHR_VERBOSE
 				Debug.LogWarning("[swatchrColorDrawer] creating black texture");
+				#endif
 				blackTexture = textureWithColor(Color.black);
 			}
 

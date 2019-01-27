@@ -19,10 +19,14 @@ namespace swatchr {
 				int swatchHash = swatch.cachedTexture.GetHashCode();
 				if (palleteTexture == null || palleteTextureCachedHashCode != swatchHash) {
 					if (palleteTexture == null) {
+						#if SWATCHR_VERBOSE
 						Debug.LogWarning("[SwatchrPalleteDrawer] creating pallete texture because there is none");
+						#endif
 					}
 					else {
+						#if SWATCHR_VERBOSE
 						Debug.LogWarningFormat("[SwatchrPalleteDrawer] creating pallete texture because cache miss. {0} != {1}", palleteTextureCachedHashCode, swatchHash);
+						#endif
 					}
 					palleteTexture = textureWithColors(swatch.colors);
 					palleteTextureCachedHashCode = swatchHash;
@@ -33,11 +37,15 @@ namespace swatchr {
 			}
 
 			if (blackTexture == null) {
+				#if SWATCHR_VERBOSE
 				Debug.LogWarning("[SwatchrPalleteDrawer] creating black texture");
+				#endif
 				blackTexture = textureWithColor(Color.black);
 			}
 			if (whiteTexture == null) {
+				#if SWATCHR_VERBOSE
 				Debug.LogWarning("[SwatchrPalleteDrawer] creating white texture");
+				#endif
 				whiteTexture = textureWithColor(Color.white);
 			}
 

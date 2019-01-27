@@ -26,7 +26,10 @@ namespace swatchr {
 		}
 
 		Texture2D CreateTexture() {
+			#if SWATCHR_VERBOSE
 			Debug.LogWarning("[Swatch] Creating Texture");
+			#endif
+			
 			var swatch = this;
 			if (swatch.colors != null && swatch.colors.Length > 0) {
 				Texture2D colorTexture = new Texture2D(swatch.colors.Length, 1);
