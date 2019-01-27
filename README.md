@@ -1,4 +1,3 @@
-# Swatchr
 ![Swatchr Logo](https://i.imgur.com/MUNRmkC.png "Swatchr Logo")
 
 # Overview
