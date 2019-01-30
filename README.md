@@ -1,5 +1,4 @@
 ![Swatchr Logo](https://i.imgur.com/nBWnzmu.png "Swatchr Logo")
-
 >by [@00jknight](http://www.00jknight.com/)
 
 # Overview
