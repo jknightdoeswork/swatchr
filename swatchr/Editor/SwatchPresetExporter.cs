@@ -40,7 +40,7 @@ namespace swatchr {
 		}
 
 		public static string GetYAMLForColor(Color c) {
-			return string.Format("\n  - m_Name: \n    m_Color: {{r: {0}, g: {1}, b: {2}, a: {3}}}",c.r, c.g, c.b, c.a);
+			return string.Format(System.Globalization.CultureInfo.InvariantCulture, "\n  - m_Name: \n    m_Color: {{r: {0}, g: {1}, b: {2}, a: {3}}}", c.r, c.g, c.b, c.a);
 		}
 	}
 
